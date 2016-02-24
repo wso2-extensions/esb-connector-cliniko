@@ -17,46 +17,51 @@
    under the License.
 -->
 <!--Send the details of the product with lower stock levels to the cliniko administrator.-->
-<proxy xmlns="http://ws.apache.org/ns/synapse" name="cliniko_notifyStockLevels" transports="https http" startOnLoad="true" trace="disable">
-    <description />
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="cliniko_notifyStockLevels"
+       transports="https http" startOnLoad="true" trace="disable">
+    <description/>
     <target>
         <inSequence onError="faultHandlerSeq">
             <!-- Cliniko Properties -->
-            <property name="cliniko.apiUrl" expression="get-property('registry', 'connectors/Cliniko/apiUrl')" />
-            <property name="cliniko.apiKey" expression="get-property('registry', 'connectors/Cliniko/apiKey')" />
-			
+            <property name="cliniko.apiUrl"
+                      expression="get-property('registry', 'connectors/Cliniko/apiUrl')"/>
+            <property name="cliniko.apiKey"
+                      expression="get-property('registry', 'connectors/Cliniko/apiKey')"/>
+
             <!-- Madnrill Properties -->
-            <property name="mandrill.apiUrl" expression="get-property('registry', 'connectors/Mandrill/apiUrl')" />
-            <property name="mandrill.apiKey" expression="get-property('registry', 'connectors/Mandrill/apiKey')" />
-            <property name="mandrill.fromName" expression="json-eval($.mandrill.fromName)" />
-            <property name="mandrill.fromEmail" expression="json-eval($.mandrill.fromEmail)" />
-			
+            <property name="mandrill.apiUrl"
+                      expression="get-property('registry', 'connectors/Mandrill/apiUrl')"/>
+            <property name="mandrill.apiKey"
+                      expression="get-property('registry', 'connectors/Mandrill/apiKey')"/>
+            <property name="mandrill.fromName" expression="json-eval($.mandrill.fromName)"/>
+            <property name="mandrill.fromEmail" expression="json-eval($.mandrill.fromEmail)"/>
+
             <!--Extract cliniko_getSettingsSeq to get details of cliniko.-->
-            <sequence key="cliniko_getSettingsSeq" />
-			
+            <sequence key="cliniko_getSettingsSeq"/>
+
             <!--Call cliniko connector listProducts method to list all the products. -->
             <cliniko.init>
                 <apiUrl>{$ctx:cliniko.apiUrl}</apiUrl>
                 <apiKey>{$ctx:cliniko.apiKey}</apiKey>
             </cliniko.init>
             <cliniko.listProducts/>
-			
+
             <!-- START: Proceed only if the Products are retrieved successfully. -->
             <filter source="$axis2:HTTP_SC" regex="200">
                 <then>
-                    <property name="cliniko.productCount" expression="count(//products)" />
-					
+                    <property name="cliniko.productCount" expression="count(//products)"/>
+
                     <!-- START: Proceed only if there is at least one product. -->
                     <filter xpath="get-property('cliniko.productCount') = 0.0">
                         <then>
-                            <property name="id" value="{}" />
-                            <property name="status" value="skipped" />
-                            <property name="message" value="There are no products to process." />
+                            <property name="id" value="{}"/>
+                            <property name="status" value="skipped"/>
+                            <property name="message" value="There are no products to process."/>
                             <call-template target="responseHandlerTemplate">
-                                <with-param name="id" value="{$ctx:id}" />
-                                <with-param name="activity" value="cliniko_listProducts" />
-                                <with-param name="status" value="{$ctx:status}" />
-                                <with-param name="message" value="{$ctx:message}" />
+                                <with-param name="id" value="{$ctx:id}"/>
+                                <with-param name="activity" value="cliniko_listProducts"/>
+                                <with-param name="status" value="{$ctx:status}"/>
+                                <with-param name="message" value="{$ctx:message}"/>
                             </call-template>
                             <loopback/>
                         </then>
@@ -98,10 +103,11 @@
 									 mc.setProperty('mandrill.to', mailTo);
 								]]>
                             </script>
-							
-                            <property name="mandrill.html" expression="fn:concat('&lt;html&gt;', get-property('mandrill.html'), '&lt;/html&gt;')" />
-                            
-							<!-- Call mandril sendMessage method to Send stock level to the customer. -->
+
+                            <property name="mandrill.html"
+                                      expression="fn:concat('&lt;html&gt;', get-property('mandrill.html'), '&lt;/html&gt;')"/>
+
+                            <!-- Call mandril sendMessage method to Send stock level to the customer. -->
                             <mandrill.init>
                                 <apiKey>{$ctx:mandrill.apiKey}</apiKey>
                                 <apiUrl>{$ctx:mandrill.apiUrl}</apiUrl>
@@ -119,27 +125,28 @@
                                 <viewContentLink>true</viewContentLink>
                                 <to>{$ctx:mandrill.to}</to>
                             </mandrill.sendMessage>
-                            <property name="mandrill.mailId" expression="json-eval($[0]._id)" />
-							
+                            <property name="mandrill.mailId" expression="json-eval($[0]._id)"/>
+
                             <!-- START: Append a message to be sent to the user regarding the status of the send email operation. -->
                             <filter source="boolean(get-property('mandrill.mailId'))" regex="true">
                                 <then>
-                                    <property name="id" value="{}" />
-                                    <property name="status" value="success" />
-                                    <property name="message" value="Insufficient stock levels of the products have been successfully notified to the administrator." />
+                                    <property name="id" value="{}"/>
+                                    <property name="status" value="success"/>
+                                    <property name="message"
+                                              value="Insufficient stock levels of the products have been successfully notified to the administrator."/>
                                 </then>
                                 <else>
-                                    <property name="id" value="{}" />
-                                    <property name="status" value="error" />
-                                    <property name="message" expression="json-eval($)" />
+                                    <property name="id" value="{}"/>
+                                    <property name="status" value="error"/>
+                                    <property name="message" expression="json-eval($)"/>
                                 </else>
                             </filter>
                             <!-- END: Append a message to be sent to the user regarding the status of the send email operation. -->
                             <call-template target="responseHandlerTemplate">
-                                <with-param name="activity" value="mandrill_sendStockDetails" />
-                                <with-param name="id" value="{$ctx:id}" />
-                                <with-param name="status" value="{$ctx:status}" />
-                                <with-param name="message" value="{$ctx:message}" />
+                                <with-param name="activity" value="mandrill_sendStockDetails"/>
+                                <with-param name="id" value="{$ctx:id}"/>
+                                <with-param name="status" value="{$ctx:status}"/>
+                                <with-param name="message" value="{$ctx:message}"/>
                             </call-template>
                             <loopback/>
                         </else>
@@ -147,14 +154,14 @@
                     <!-- END: Proceed only if there is at least one product -->
                 </then>
                 <else>
-                    <property name="id" value="{}" />
-                    <property name="status" value="error" />
-                    <property name="message" expression="json-eval($.)" />
+                    <property name="id" value="{}"/>
+                    <property name="status" value="error"/>
+                    <property name="message" expression="json-eval($.)"/>
                     <call-template target="responseHandlerTemplate">
-                        <with-param name="activity" value="cliniko_listProducts" />
-                        <with-param name="id" value="{$ctx:id}" />
-                        <with-param name="status" value="{$ctx:status}" />
-                        <with-param name="message" value="{$ctx:message}" />
+                        <with-param name="activity" value="cliniko_listProducts"/>
+                        <with-param name="id" value="{$ctx:id}"/>
+                        <with-param name="status" value="{$ctx:status}"/>
+                        <with-param name="message" value="{$ctx:message}"/>
                     </call-template>
                     <loopback/>
                 </else>
@@ -162,19 +169,20 @@
             <!-- END: Proceed only if the product are retrieved successfully. -->
         </inSequence>
         <outSequence>
-            <property name="messageType" value="application/json" scope="axis2" />
+            <property name="messageType" value="application/json" scope="axis2"/>
             <payloadFactory media-type="json">
                 <format>{
-				"Response":{
-					"process":"cliniko_notifyStockLevels",
-					"activityResponse":[$1]
-				}
-				}</format>
+                    "Response":{
+                    "process":"cliniko_notifyStockLevels",
+                    "activityResponse":[$1]
+                    }
+                    }
+                </format>
                 <args>
-                    <arg expression="get-property('operation', 'responseString')" />
+                    <arg expression="get-property('operation', 'responseString')"/>
                 </args>
             </payloadFactory>
-            <send />
+            <send/>
         </outSequence>
     </target>
 </proxy>

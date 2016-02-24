@@ -1,6 +1,6 @@
 {
-    "mandrill": {
-        "fromEmail": "etriggerit@gmail.com",
-        "fromName": "ETrigger Admin"
-    }
+  "mandrill": {
+    "fromEmail": "etriggerit@gmail.com",
+    "fromName": "ETrigger Admin"
+  }
 }
