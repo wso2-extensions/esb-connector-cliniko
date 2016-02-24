@@ -1,4 +1,4 @@
-### Concur ESB Connector
+### Cliniko ESB Connector
 
 The Cliniko connector allows you to access the Cliniko REST API through WSO2 ESB.
 Cliniko is a complete practice management system used by thousands of healthcare practitioners in

@@ -59,7 +59,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         apiRequestHeadersMap.put("Authorization", "Basic " + Base64.encode(authString.getBytes()));
 
         apiEndpointUrl = connectorProperties.getProperty("apiUrl") + "/v1";
-
     }
 
     /**
@@ -99,7 +98,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("appointment_types").getJSONObject(0).getString(
                 "name"), apiRestResponse.getBody().getJSONArray("appointment_types").getJSONObject(0).getString(
                 "name"));
-
     }
 
     /**
@@ -135,7 +133,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 "name"), apiRestResponse.getBody().getJSONArray("appointment_types").getJSONObject(0).getString(
                 "name"));
         Assert.assertEquals(apiRestResponse.getBody().getJSONArray("appointment_types").length(), 1);
-
     }
 
     /**
@@ -156,7 +153,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -184,7 +180,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getString("name"), apiRestResponse.getBody().getString("name"));
         Assert.assertEquals(esbRestResponse.getBody().getInt("duration_in_minutes"), apiRestResponse.getBody().getInt(
                 "duration_in_minutes"));
-
     }
 
     /**
@@ -211,7 +206,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -245,7 +239,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 .getJSONObject("appointment_type").getJSONObject("links").getString("self").split("/")[5]);
         Assert.assertEquals(connectorProperties.getProperty("businessId"), apiRestResponse.getBody().getJSONObject(
                 "business").getJSONObject("links").getString("self").split("/")[5]);
-
     }
 
     /**
@@ -286,7 +279,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 "business").getJSONObject("links").getString("self").split("/")[5]);
         Assert.assertEquals(apiRestResponse.getBody().getBoolean("did_not_arrive"), true);
         Assert.assertEquals(apiRestResponse.getBody().getBoolean("patient_arrived"), true);
-
     }
 
     /**
@@ -315,7 +307,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 .getBody().getJSONObject("errors").getString("patient_id"));
         Assert.assertEquals(esbRestResponse.getBody().getString("message"), apiRestResponse.getBody().getString(
                 "message"));
-
     }
 
     /**
@@ -363,7 +354,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 .getString("notes"));
         Assert.assertEquals(apiRestResponse2.getBody().getBoolean("patient_arrived"), false);
         Assert.assertEquals(apiRestResponse2.getBody().getBoolean("did_not_arrive"), false);
-
     }
 
     /**
@@ -392,7 +382,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 .getBody().getJSONObject("errors").getString("base"));
         Assert.assertEquals(esbRestResponse.getBody().getString("message"), apiRestResponse.getBody().getString(
                 "message"));
-
     }
 
     /**
@@ -421,7 +410,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getString("appointment_end"), apiRestResponse.getBody().getString(
                 "appointment_end"));
         Assert.assertEquals(esbRestResponse.getBody().getString("notes"), apiRestResponse.getBody().getString("notes"));
-
     }
 
     /**
@@ -448,7 +436,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -485,7 +472,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("appointments").getJSONObject(0).getBoolean(
                 "did_not_arrive"), apiRestResponse.getBody().getJSONArray("appointments").getJSONObject(0).getBoolean(
                 "did_not_arrive"));
-
     }
 
     /**
@@ -523,7 +509,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("appointments").getJSONObject(0).getBoolean(
                 "did_not_arrive"), apiRestResponse.getBody().getJSONArray("appointments").getJSONObject(0).getBoolean(
                 "did_not_arrive"));
-
     }
 
     /**
@@ -544,7 +529,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-
     }
 
     /**
@@ -580,7 +564,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("appointments").getJSONObject(0).getBoolean(
                 "did_not_arrive"), apiRestResponse.getBody().getJSONArray("appointments").getJSONObject(0).getBoolean(
                 "did_not_arrive"));
-
     }
 
     /**
@@ -617,7 +600,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 "did_not_arrive"), apiRestResponse.getBody().getJSONArray("appointments").getJSONObject(0).getBoolean(
                 "did_not_arrive"));
         Assert.assertEquals(apiRestResponse.getBody().getJSONArray("appointments").length(), 1);
-
     }
 
     /**
@@ -642,7 +624,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getString("status"), apiRestResponse.getBody().getString(
                 "status"));
         Assert.assertEquals(esbRestResponse.getBody().getString("error"), apiRestResponse.getBody().getString("error"));
-
     }
 
     /**
@@ -672,7 +653,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("available_times").getJSONObject(0).getString(
                 "appointment_start"), apiRestResponse.getBody().getJSONArray("available_times").getJSONObject(0)
                 .getString("appointment_start"));
-
     }
 
     /**
@@ -703,7 +683,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("available_times").getJSONObject(0).getString(
                 "appointment_start"), apiRestResponse.getBody().getJSONArray("available_times").getJSONObject(0)
                 .getString("appointment_start"));
-
     }
 
     /**
@@ -729,7 +708,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-
     }
 
     /**
@@ -757,7 +735,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 .getString("appointment_start"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONObject("links").getString("self"), apiRestResponse
                 .getBody().getJSONObject("links").getString("self"));
-
     }
 
     /**
@@ -788,7 +765,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -823,7 +799,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONObject("appointments").getJSONObject("links").getString(
                 "self"), apiRestResponse.getBody().getJSONObject("appointments").getJSONObject("links").getString(
                 "self"));
-
     }
 
     /**
@@ -850,7 +825,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -887,7 +861,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("businesses").getJSONObject(0).getString(
                 "updated_at"), apiRestResponse.getBody().getJSONArray("businesses").getJSONObject(0).getString(
                 "updated_at"));
-
     }
 
     /**
@@ -922,7 +895,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 "businesses").getJSONObject(0).getJSONObject("practitioners").getJSONObject("links").getString(
                 "self"));
         Assert.assertEquals(apiRestResponse.getBody().getJSONArray("businesses").length(), 1);
-
     }
 
     /**
@@ -943,7 +915,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-
     }
 
     /**
@@ -972,7 +943,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getInt("number"), apiRestResponse.getBody().getInt("number"));
         Assert.assertEquals(esbRestResponse.getBody().getDouble("net_amount"), apiRestResponse.getBody().getDouble(
                 "net_amount"));
-
     }
 
     /**
@@ -999,7 +969,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -1037,7 +1006,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 apiRestResponse.getBody().getJSONArray("invoices").getJSONObject(0).getString("invoice_to"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("invoices").getJSONObject(0).getInt("number"),
                 apiRestResponse.getBody().getJSONArray("invoices").getJSONObject(0).getInt("number"));
-
     }
 
     /**
@@ -1073,7 +1041,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 apiRestResponse.getBody().getJSONArray("invoices").getJSONObject(0).getString("invoice_to"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("invoices").getJSONObject(0).getInt("number"),
                 apiRestResponse.getBody().getJSONArray("invoices").getJSONObject(0).getInt("number"));
-
     }
 
     /**
@@ -1094,7 +1061,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -1124,7 +1090,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONObject("patient").getJSONObject("links").getString("self")
                 .split("/")[5], apiRestResponse.getBody().getJSONObject("patient").getJSONObject("links").getString(
                 "self").split("/")[5]);
-
     }
 
     /**
@@ -1151,7 +1116,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -1188,7 +1152,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 "patient").getJSONObject("links").getString("self").split("/")[5], apiRestResponse.getBody()
                 .getJSONArray("medical_alerts").getJSONObject(0).getJSONObject("patient").getJSONObject("links")
                 .getString("self").split("/")[5]);
-
     }
 
     /**
@@ -1226,7 +1189,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 "patient").getJSONObject("links").getString("self").split("/")[5], apiRestResponse.getBody()
                 .getJSONArray("medical_alerts").getJSONObject(0).getJSONObject("patient").getJSONObject("links")
                 .getString("self").split("/")[5]);
-
     }
 
     /**
@@ -1247,7 +1209,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-
     }
 
     /**
@@ -1275,7 +1236,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 "name"));
         Assert.assertEquals(connectorProperties.getProperty("medicalAlertNameUpdated"), apiRestResponse2.getBody()
                 .getString("name"));
-
     }
 
     /**
@@ -1299,7 +1259,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -1336,7 +1295,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 .getBody().getJSONObject("links").getString("self"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONObject("invoices").getJSONObject("links").getString(
                 "self"), apiRestResponse.getBody().getJSONObject("invoices").getJSONObject("links").getString("self"));
-
     }
 
     /**
@@ -1378,7 +1336,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 .getString("gender"));
         Assert.assertEquals(connectorProperties.getProperty("optionalPatientLastName"), apiRestResponse.getBody()
                 .getString("last_name"));
-
     }
 
     /**
@@ -1406,7 +1363,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 .getBody().getJSONObject("errors").getString("last_name"));
         Assert.assertEquals(esbRestResponse.getBody().getString("message"), apiRestResponse.getBody().getString(
                 "message"));
-
     }
 
     /**
@@ -1437,7 +1393,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 "date_of_birth"));
         Assert.assertEquals(esbRestResponse.getBody().getString("address_1"), apiRestResponse.getBody().getString(
                 "address_1"));
-
     }
 
     /**
@@ -1464,7 +1419,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -1497,7 +1451,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 apiRestResponse.getBody().getJSONArray("patients").getJSONObject(0).getString("last_name"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("patients").getJSONObject(0).getString("updated_at"),
                 apiRestResponse.getBody().getJSONArray("patients").getJSONObject(0).getString("updated_at"));
-
     }
 
     /**
@@ -1530,7 +1483,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("patients").getJSONObject(0).getString("updated_at"),
                 apiRestResponse.getBody().getJSONArray("patients").getJSONObject(0).getString("updated_at"));
         Assert.assertEquals(apiRestResponse.getBody().getJSONArray("patients").length(), 1);
-
     }
 
     /**
@@ -1554,7 +1506,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getString("status"), apiRestResponse.getBody().getString(
                 "status"));
         Assert.assertEquals(esbRestResponse.getBody().getString("error"), apiRestResponse.getBody().getString("error"));
-
     }
 
     /**
@@ -1589,7 +1540,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONObject("practitioner_reference_numbers").getJSONObject(
                 "links").getString("self"), apiRestResponse.getBody().getJSONObject("practitioner_reference_numbers")
                 .getJSONObject("links").getString("self"));
-
     }
 
     /**
@@ -1616,7 +1566,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -1655,7 +1604,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 "last_name"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("practitioners").getJSONObject(0).getString("title"),
                 apiRestResponse.getBody().getJSONArray("practitioners").getJSONObject(0).getString("title"));
-
     }
 
     /**
@@ -1691,7 +1639,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 "practitioners").getJSONObject(0).getJSONObject("appointment_types").getJSONObject("links")
                 .getString("self"));
         Assert.assertEquals(apiRestResponse.getBody().getJSONArray("practitioners").length(), 1);
-
     }
 
     /**
@@ -1712,7 +1659,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-
     }
 
     /**
@@ -1742,7 +1688,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 "stock_level"));
         Assert.assertEquals(esbRestResponse.getBody().getDouble("cost_price"), apiRestResponse.getBody().getDouble(
                 "cost_price"));
-
     }
 
     /**
@@ -1769,7 +1714,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
-
     }
 
     /**
@@ -1809,7 +1753,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getInt("stock_level"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("notes"),
                 apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("notes"));
-
     }
 
     /**
@@ -1846,7 +1789,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("notes"),
                 apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("notes"));
         Assert.assertEquals(apiRestResponse.getBody().getJSONArray("products").length(), 1);
-
     }
 
     /**
@@ -1867,7 +1809,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
-
     }
 
     /**
@@ -1900,7 +1841,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getJSONObject("account").getJSONObject("admin").getString(
                 "last_name"), apiRestResponse.getBody().getJSONObject("account").getJSONObject("admin").getString(
                 "last_name"));
-
     }
 
 
@@ -1941,7 +1881,6 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 "name"));
         Assert.assertEquals(connectorProperties.getProperty("optionalPatientId"), apiRestResponse.getBody()
                 .getJSONObject("patient").getJSONObject("links").getString("self").split("/")[5]);
-
     }
 
     /**
@@ -1975,7 +1914,5 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 .getBody().getJSONObject("errors").getString("name"));
         Assert.assertEquals(esbRestResponse.getBody().getString("message"), apiRestResponse.getBody().getString(
                 "message"));
-
     }
-
 }
