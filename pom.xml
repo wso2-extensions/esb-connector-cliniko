@@ -135,10 +135,12 @@
         </dependency>
     </dependencies>
     <scm>
-        <connection>scm:git:https://github.com/wso2-extensions/esb-connector-cliniko.git
+        <connection>
+            scm:git:https://github.com/wso2-extensions/esb-connector-cliniko.git
         </connection>
         <url>https://github.com/wso2-extensions/esb-connector-cliniko.git</url>
-        <developerConnection>scm:git:https://github.com/wso2-extensions/esb-connector-cliniko
+        <developerConnection>
+            scm:git:https://github.com/wso2-extensions/esb-connector-cliniko
         </developerConnection>
         <tag>HEAD</tag>
     </scm>
