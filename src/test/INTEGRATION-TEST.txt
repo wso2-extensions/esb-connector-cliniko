@@ -20,6 +20,9 @@ STEPS:
 
  2. If required add the X.509 certificate from https://api.cliniko.com to the client-truststore.jks of the ESB located in <ESB_HOME>/repository/resources/security folder
     and wso2carbon.jks located in <CLINIKO_CONNECTOR_HOME>/src/test/resources/keystores/products.
+    Navigate to "{CLINIKO_CONNECTOR_HOME}/src/test/resources/keystores/products/" using command prompt and execute keytool -importcert -file CERT_FILE_NAME -keystore wso2carbon.jks -alias "CERT_NAME" in command line to import Cliniko certificate in to keystore. Give "wso2carbon" as password.
+    		NOTE : CERT_FILE_NAME is the file name which was extracted from clevertim, change it accordingly. (e.g. -.cliniko.com)
+    			   CERT_NAME is name of the certificate. (e.g. cliniko)
 
  3. Navigate to location "<ESB_HOME>/repository/conf/axis2" and add/uncomment following lines in "axis2.xml".
 

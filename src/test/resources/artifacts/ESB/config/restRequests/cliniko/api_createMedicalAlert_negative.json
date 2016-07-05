@@ -1,9 +1,4 @@
 {
-  "patient_id":
-  %
-  s
-  (
-  optionalPatientId
-  ),
+  "patient_id":%s(optionalPatientId),
   "name": ""
 }

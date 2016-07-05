@@ -60,7 +60,7 @@
             }
             // Add a leading '?' and remove the trailing '&'
             if (urlQuery != "") {
-               urlQuery = '?' + urlQuery.substring(0, urlQuery.length - 1);
+               urlQuery = '?' + urlQuery.toString().substring(0, urlQuery.toString().lastIndexOf("&"));
                mc.setProperty('uri.var.urlQuery', urlQuery);
             }
             // Set the endpoint leaf based on whether the user wants to retrieve only the deleted patients or archived patients or all.
