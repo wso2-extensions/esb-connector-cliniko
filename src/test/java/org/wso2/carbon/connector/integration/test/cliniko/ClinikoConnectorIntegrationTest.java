@@ -1681,8 +1681,8 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
         Assert.assertEquals(esbRestResponse.getBody().getString("created_at"), apiRestResponse.getBody().getString(
                 "created_at"));
         Assert.assertEquals(esbRestResponse.getBody().getString("name"), apiRestResponse.getBody().getString("name"));
-        Assert.assertEquals(esbRestResponse.getBody().getString("code"), apiRestResponse.getBody().getString(
-                "code"));
+        Assert.assertEquals(esbRestResponse.getBody().getString("item_code"), apiRestResponse.getBody().getString(
+                "item_code"));
         Assert.assertEquals(esbRestResponse.getBody().getInt("stock_level"), apiRestResponse.getBody().getInt(
                 "stock_level"));
         Assert.assertEquals(esbRestResponse.getBody().getDouble("cost_price"), apiRestResponse.getBody().getDouble(
@@ -1746,8 +1746,8 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("name"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("products").getJSONObject(0).getDouble("cost_price"),
                 apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getDouble("cost_price"));
-        Assert.assertEquals(esbRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("code"),
-                apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("code"));
+        Assert.assertEquals(esbRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("item_code"),
+                apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("item_code"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("products").getJSONObject(0).getInt("stock_level"),
                 apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getInt("stock_level"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("notes"),
@@ -1781,8 +1781,8 @@ public class ClinikoConnectorIntegrationTest extends ConnectorIntegrationTestBas
                 apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("name"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("products").getJSONObject(0).getDouble("cost_price"),
                 apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getDouble("cost_price"));
-        Assert.assertEquals(esbRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("code"),
-                apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("code"));
+        Assert.assertEquals(esbRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("item_code"),
+                apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("item_code"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("products").getJSONObject(0).getInt("stock_level"),
                 apiRestResponse.getBody().getJSONArray("products").getJSONObject(0).getInt("stock_level"));
         Assert.assertEquals(esbRestResponse.getBody().getJSONArray("products").getJSONObject(0).getString("notes"),
