@@ -4,7 +4,7 @@
     "category": "Other",
     "documentationUrl": "https://docs.wso2.com/display/ESBCONNECTORS/Cliniko+Connector",
     "description": "The Cliniko connector allows you to access the Cliniko REST API through WSO2 ESB. Cliniko is a complete practice management system used by thousands of healthcare practitioners in more than 55 countries worldwide. Cliniko helps to manage your schedule, your treatment notes, invoices and payments and a lot more. Cliniko works great for solo practitioners, large teams and anything in between.",
-    "status": "Unsupported",
+    "status": "Active",
     "labels": [
         "connector"
     ],
